@@ -59,8 +59,8 @@ const Login = ({ setLoggedIn }) => {
   };
 
   return (
-    <div className="flex  items-center h-screen w-[100%] justify-center ">
-      <div className="glass w-[40%] h-[75%] rounded-2xl ">
+    <div className="flex  items-center  h-screen w-[100%] justify-center ">
+      <div className="glass w-[90%] md:w-[40%] h-[60%] md:h-[75%] rounded-2xl ">
         <h1 className="pt-6 font-bold text-4xl">TODO APP</h1>
         <form onSubmit={handleSubmit} className="flex flex-col gap-y-4 items-center pt-10">
           <h2 className="text-xl ">Email</h2>

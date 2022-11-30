@@ -55,8 +55,8 @@ const Register = () => {
 
   return (
     <>
-      <div className=" h-screen flex justify-center item-center pt-10">
-        <div className="glass w-[40%] h-[95%] rounded-2xl">
+      <div className=" h-screen flex justify-center item-center pt-24 md:pt-10">
+        <div className="glass w-[90%] md:w-[40%] h-[75%] md:h-[95%] rounded-2xl">
           <form onSubmit={handleSubmit} className="flex flex-col gap-y-2 items-center pt-5">
             <h1 className="pt-6 font-bold text-4xl">TODO APP</h1>
             <h2 className="text-xl">First Name</h2>

@@ -25,8 +25,8 @@ const AddTodoForm = ({ setTodos, todos }) => {
   };
 
   return (
-    <div className="flex pl-16 items-center w-[70%] ">
-      <div className=" w-[80%] h-[62%] rounded-2xl glass ">
+    <div className="flex md:pl-16 items-center justify-center md:justify-start md:w-[70%] pt-10 md:pt-0">
+      <div className="w-[95%] md:w-[80%] h-[62%] rounded-2xl glass ">
         <h1 className="font-bold text-4xl pt-2">Add Todo</h1>
         <form onSubmit={handleSubmit} className="flex flex-col gap-y-4 items-center h-[100%] mt-10">
           <div className="w-[90%] flex items-center justify-around">
