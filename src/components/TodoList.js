@@ -43,7 +43,7 @@ const TodoList = ({ loggedIn }) => {
           {addTodo ? <AddTodoForm todos={todos} setTodos={setTodos} /> : <OpenedTodo todo={home} getAllTodos={getAllTodos} setAddTodo={setAddTodo} setHome={setHome} />}
 
           {/* Creating right side scroll for displaying all the todos */}
-          <div className="h-screen  md:overflow-y-scroll flex flex-col gap-y-4 scroll-bar-custom py-4  w-screen  md:w-[30%]">
+          <div className="h-screen overflow-y-scroll flex flex-col gap-y-4 scroll-bar-custom py-4  w-screen  md:w-[30%]">
             {/* Onclick Functionality on clicking Add Todo */}
             <div className="flex justify-between">
               <div
