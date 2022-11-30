@@ -1,53 +1,62 @@
-import React, { useState } from "react";
-import { deleteTodo, editTitle, getTodoById } from "../utils/handleApi";
+import React from "react";
+import { deleteTodo, editTitle } from "../utils/handleApi";
 import arrow from "./arrow.png";
 import { createTask, editTask } from "../utils/handleTaskApi";
 import "./OpenedTodo.css";
 
-const OpenedTodo = ({ todo, getAllTodos, setAddTodo, addTodo, setHome }) => {
-  const [newTask, setNewTask] = useState(todo.tasks);
-  // console.log(todo);
-  const [updatedTodo, setUpdatedTodo] = useState(todo);
-  // console.log(updatedTodo);
-
+const OpenedTodo = ({ todo, getAllTodos, setAddTodo, setHome }) => {
   const deleteSelected = async () => {
-    await deleteTodo(todo._id);
-    setTimeout(() => {
-      getAllTodos();
-      setAddTodo(true);
-    }, 400);
+    let result = window.confirm("Are you sure you want to delete?");
+
+    if (result) {
+      await deleteTodo(todo._id);
+      setTimeout(() => {
+        getAllTodos();
+        setAddTodo(true);
+      }, 400);
+    }
   };
 
   const addTask = async () => {
     let promptTask = prompt("Please enter a task");
-    setNewTask(promptTask);
-    await createTask(todo?._id, promptTask);
-    setTimeout(() => {
-      // setUpdatedTodo(getTodoById(todo.id));
-      // console.log("updated", updatedTodo);
-      getAllTodos();
-    }, 400);
+    if (promptTask === "") {
+      alert("Please enter some value");
+    } else {
+      const response = await createTask(todo?._id, promptTask);
+      setHome({ ...todo, tasks: response.data.reqTodo.tasks });
+      setTimeout(() => {
+        getAllTodos();
+      }, 600);
+    }
   };
 
   const editTodoTask = async (event) => {
     let promptTask = prompt("Please Edit the task");
-    if (promptTask.length > 0) {
-      todo.tasks[event.target.id] = promptTask;
-      await editTask(todo._id, todo.tasks);
-      setTimeout(() => {
-        getAllTodos();
-      }, 400);
+    if (promptTask === "") {
+      alert("Please enter some value");
+    } else {
+      if (promptTask.length > 0) {
+        todo.tasks[event.target.id] = promptTask;
+        await editTask(todo._id, todo.tasks);
+        setTimeout(() => {
+          getAllTodos();
+        }, 400);
+      }
     }
   };
 
   const editTodoTitle = async () => {
     let promptTask = prompt("Please Edit the Todo Name");
-    if (promptTask.length > 0) {
-      todo.title = promptTask;
-      await editTitle(todo._id, todo.title);
-      setTimeout(() => {
-        getAllTodos();
-      }, 400);
+    if (promptTask === "") {
+      alert("Please enter some value");
+    } else {
+      if (promptTask.length > 0) {
+        todo.title = promptTask;
+        const response = await editTitle(todo._id, todo.title);
+        setTimeout(() => {
+          getAllTodos();
+        }, 400);
+      }
     }
   };
 
@@ -61,12 +70,12 @@ const OpenedTodo = ({ todo, getAllTodos, setAddTodo, addTodo, setHome }) => {
         <div className="pl-6 glass rounded-2xl w-[80%] text-left py-20  ">
           <div className="  mb-8">
             <h1 className="font-bold text-6xl  pb-10 w-fit cursor-pointer" onClick={editTodoTitle}>
-              {todo.title}
+              {todo?.title}
             </h1>
             <h2 className="font-semibold text-4xl ">Tasks</h2>
             <div className="flex flex-col gap-2 pt-4 pr-6">
-              {todo?.tasks &&
-                todo?.tasks.map((task, index) => {
+              {todo.tasks &&
+                todo.tasks.map((task, index) => {
                   return (
                     <div className="flex items-center  w-fit border border-gray-400 rounded-xl px-2 cursor-pointer pr-4" key={index} id={index} onClick={editTodoTask}>
                       <img src={arrow} alt="" className="rotate-180 w-3" />

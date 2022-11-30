@@ -1,14 +1,9 @@
 import axios from "axios";
 
-const createTodo = async (title) => {
-  axios
-    .post("/createTodo", { title })
-    .then(() => {
-      console.log({ message: "Created Successfully" });
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+// this todo is an object which contains title and tasks (coming from AddTodoForm.js)
+const createTodo = async (todo, setTodos, todos) => {
+  const response = axios.post("/createTodo", todo); // this todo goes as request body inside createTodoController.js
+  return response;
 };
 
 const deleteTodo = async (id) => {
@@ -23,20 +18,18 @@ const deleteTodo = async (id) => {
 };
 
 const editTitle = async (id, title) => {
-  axios
-    .put(`/updateTodo/${id}`, { title })
-    .then(() => {
-      console.log({ message: "Title Updated Successfully" });
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  const response = axios.put(`/updateTodo/${id}`, { title });
+  return response;
 };
 
 const getTodoById = async (id) => {
   const response = await axios.get(`/getTodos/:${id}`);
-  console.log("getTodoByiD:", response);
-  // return response;
+  return response;
 };
 
-export { createTodo, deleteTodo, editTitle, getTodoById };
+const searchTodo = async (find) => {
+  const response = await axios.post(`/searchTodos?find=${find}`);
+  return response;
+};
+
+export { createTodo, deleteTodo, editTitle, getTodoById, searchTodo };

@@ -1,14 +1,8 @@
 import axios from "axios";
 
 const createTask = async (id, task) => {
-  axios
-    .post(`/addTask/${id}`, { task })
-    .then(() => {
-      console.log({ message: "Task added successfully", task });
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  const response = axios.post(`/addTask/${id}`, { task });
+  return response;
 };
 
 const editTask = async (id, tasks) => {
