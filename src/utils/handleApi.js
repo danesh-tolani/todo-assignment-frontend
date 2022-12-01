@@ -1,5 +1,5 @@
 import axios from "axios";
-
+const BASE_URL = "https://todo-assignment-backend-production.up.railway.app";
 // this todo is an object which contains title and tasks (coming from AddTodoForm.js)
 const createTodo = async (todo, setTodos, todos) => {
   const response = axios.post("/createTodo", todo); // this todo goes as request body inside createTodoController.js
@@ -8,7 +8,7 @@ const createTodo = async (todo, setTodos, todos) => {
 
 const deleteTodo = async (id) => {
   axios
-    .delete(`/deleteTodo/${id}`)
+    .delete(`${BASE_URL}/deleteTodo/${id}`)
     .then(() => {
       console.log({ message: "Deleted Successfully" });
     })
@@ -18,17 +18,17 @@ const deleteTodo = async (id) => {
 };
 
 const editTitle = async (id, title) => {
-  const response = axios.put(`/updateTodo/${id}`, { title });
+  const response = axios.put(`${BASE_URL}/updateTodo/${id}`, { title });
   return response;
 };
 
 const getTodoById = async (id) => {
-  const response = await axios.get(`/getTodos/:${id}`);
+  const response = await axios.get(`${BASE_URL}/getTodos/:${id}`);
   return response;
 };
 
 const searchTodo = async (find) => {
-  const response = await axios.post(`/searchTodos?find=${find}`);
+  const response = await axios.post(`${BASE_URL}/searchTodos?find=${find}`);
   return response;
 };
 

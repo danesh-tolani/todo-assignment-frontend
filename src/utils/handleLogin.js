@@ -1,14 +1,16 @@
 import axios from "axios";
 
+const BASE_URL = "https://todo-assignment-backend-production.up.railway.app";
+
 // * we wil have to send firstname, lastname, email, password
 const registerUser = async (userData) => {
-  const response = axios.post("/api/user/register", userData);
+  const response = axios.post(`${BASE_URL}/api/user/register`, userData);
   return response;
 };
 
-// * elain and password will come
+// * id and password will come
 const loginUser = async (userData) => {
-  const response = axios.post("/api/user/login", userData);
+  const response = axios.post(`${BASE_URL}/api/user/login`, userData);
   return response;
 };
 
