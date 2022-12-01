@@ -7,6 +7,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { searchTodo } from "../utils/handleApi";
 
+const BASE_URL = "https://todo-assignment-backend-production.up.railway.app";
+
 const TodoList = ({ loggedIn }) => {
   const [todos, setTodos] = useState([]);
   const [home, setHome] = useState({});
@@ -26,7 +28,7 @@ const TodoList = ({ loggedIn }) => {
   };
 
   const getAllTodos = async () => {
-    const response = await axios.get("/getTodos");
+    const response = await axios.get(`${BASE_URL}/`);
     setTodos(response.data);
   };
 

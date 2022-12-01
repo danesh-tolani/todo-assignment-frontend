@@ -2,7 +2,7 @@ import axios from "axios";
 const BASE_URL = "https://todo-assignment-backend-production.up.railway.app";
 // this todo is an object which contains title and tasks (coming from AddTodoForm.js)
 const createTodo = async (todo, setTodos, todos) => {
-  const response = axios.post("/createTodo", todo); // this todo goes as request body inside createTodoController.js
+  const response = axios.post(`${BASE_URL}/createTodo`, todo); // this todo goes as request body inside createTodoController.js
   return response;
 };
 
