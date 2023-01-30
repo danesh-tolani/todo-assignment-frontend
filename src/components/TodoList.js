@@ -9,7 +9,7 @@ import { searchTodo } from "../utils/handleApi";
 
 // const BASE_URL = "https://todo-assignment-backend-production.up.railway.app";
 // const BASE_URL = "https://todo-assignment-backend-13lebzpmf-danesh-tolani.vercel.app";
-const BASE_URL = "https://todo-assignment-backend-r58d.vercel.app;
+const BASE_URL = "https://todo-assignment-backend-r58d.vercel.app";
 
 const TodoList = ({ loggedIn }) => {
   const [todos, setTodos] = useState([]);
