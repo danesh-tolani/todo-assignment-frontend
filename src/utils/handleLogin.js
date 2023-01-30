@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = "https://todo-assignment-backend-production.up.railway.app";
+// const BASE_URL = "https://todo-assignment-backend-production.up.railway.app";
+const BASE_URL = "https://todo-assignment-backend-13lebzpmf-danesh-tolani.vercel.app";
 
 // * we wil have to send firstname, lastname, email, password
 const registerUser = async (userData) => {

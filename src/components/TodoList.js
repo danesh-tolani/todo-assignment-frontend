@@ -7,7 +7,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { searchTodo } from "../utils/handleApi";
 
-const BASE_URL = "https://todo-assignment-backend-production.up.railway.app";
+// const BASE_URL = "https://todo-assignment-backend-production.up.railway.app";
+const BASE_URL = "https://todo-assignment-backend-13lebzpmf-danesh-tolani.vercel.app";
 
 const TodoList = ({ loggedIn }) => {
   const [todos, setTodos] = useState([]);
@@ -42,7 +43,19 @@ const TodoList = ({ loggedIn }) => {
       <>
         <div className="flex justify-between md:flex-row flex-col">
           {/* Expanded Todo */}
-          {addTodo ? <AddTodoForm todos={todos} setTodos={setTodos} /> : <OpenedTodo todo={home} getAllTodos={getAllTodos} setAddTodo={setAddTodo} setHome={setHome} />}
+          {addTodo ? (
+            <AddTodoForm
+              todos={todos}
+              setTodos={setTodos}
+            />
+          ) : (
+            <OpenedTodo
+              todo={home}
+              getAllTodos={getAllTodos}
+              setAddTodo={setAddTodo}
+              setHome={setHome}
+            />
+          )}
 
           {/* Creating right side scroll for displaying all the todos */}
           <div className="h-screen overflow-y-scroll flex flex-col gap-y-4 scroll-bar-custom py-4  w-screen  md:w-[30%]">
@@ -65,7 +78,15 @@ const TodoList = ({ loggedIn }) => {
             {/* Generating Todos on right side scroll */}
             {todos &&
               todos.map((todo, index) => {
-                return <Todo key={index} todo={todo} setHome={setHome} setAddTodo={setAddTodo} currentTodo={home} />;
+                return (
+                  <Todo
+                    key={index}
+                    todo={todo}
+                    setHome={setHome}
+                    setAddTodo={setAddTodo}
+                    currentTodo={home}
+                  />
+                );
               })}
           </div>
         </div>
